@@ -1,5 +1,5 @@
 .ri{
-    border-right: 3px solid black;
+    border-right: 3px solid rgba(32, 122, 138, 0.863);
     
 
 }
@@ -11,7 +11,7 @@
     height: 33%;
 }
 .bo{
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid  rgba(32, 122, 138, 0.863);
 }
 .jogador{
     margin: 30px;
@@ -23,12 +23,13 @@
     border-top: 1px solid black;
 }
 .tabela{
-    border: 2px solid palevioletred;
+    border: 3px solid rgb(167, 28, 74);
     margin: 0 auto;
     width: 300px;
     height: 300px;
     text-align: center;
     font-size: 35px;
+    border-radius: 5px;
 }
 
 input{

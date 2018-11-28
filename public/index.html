@@ -5,10 +5,10 @@
     <link rel="stylesheet" type="text/css" href="index.css">
     <meta charset="UTF-8" />
 
-    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script> -->
-    <!-- <script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+    <script>
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyDaKrDGkiW_18iDoB_B8m6klrsKDCcAhDE",
@@ -19,8 +19,8 @@
             messagingSenderId: "867756738365"
         };
         firebase.initializeApp(config);
-    </script> -->
-    <script src="index.js"></script>
+    </script>
+    
     
 </head>
 
@@ -37,18 +37,19 @@
                     <h2>Selecione o jogador:</h2>
                     <div class="centro">
                         <button onclick="decrescer()">-</button>
-                        <form>
+                        
                             <h3 id="usuario">1</h3>
-                        </form>
+                        
                         <button onclick="acrescentar()">+</button>
                     </div>
                 </div>
             </td>
             <td>
                 <div class="tabela">
+                    <div onclick="teste(this, '1')">aaaa</div>
                     <table class="tabela">
                         <tr>
-                            <td class="ri bo tamanho" id="1"></td>
+                            <td class="ri bo tamanho" id="1" ></td>
                             <td class="ri bo tamanho" id="2"></td>
                             <td class="bo tamanho" id="3"></td>
                         </tr>
@@ -68,8 +69,8 @@
             <td>
                 <div class="jogador">
                     <form>
-                        <h2>Digite a posição de jogada: </h2>
-                        <input id="posicao" type="text">
+                        <h2>Digite a posição da jodada: </h2>
+                        <input id="posicao" type="text"/>
                     </form>
                     <button onclick="jogar()">Jogar</button>
                 </div>
@@ -78,7 +79,7 @@
     </table>
 
 
-    
+    <script src="index.js"></script>
 </body>
 
 </html>
