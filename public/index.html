@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <title>Jogo da velha</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <meta charset="UTF-8" />
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script> -->
+    <!-- <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDaKrDGkiW_18iDoB_B8m6klrsKDCcAhDE",
+            authDomain: "jogo-da-velha-1e415.firebaseapp.com",
+            databaseURL: "https://jogo-da-velha-1e415.firebaseio.com",
+            projectId: "jogo-da-velha-1e415",
+            storageBucket: "",
+            messagingSenderId: "867756738365"
+        };
+        firebase.initializeApp(config);
+    </script> -->
+    <script src="index.js"></script>
+    
+</head>
+
+<body>
+    <table class="principal">
+        <tr>
+            <th>
+                <h1>Jogo da Velha</h1>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <div class="jogador">
+                    <h2>Selecione o jogador:</h2>
+                    <div class="centro">
+                        <button onclick="decrescer()">-</button>
+                        <form>
+                            <h3 id="usuario">1</h3>
+                        </form>
+                        <button onclick="acrescentar()">+</button>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="tabela">
+                    <table class="tabela">
+                        <tr>
+                            <td class="ri bo tamanho" id="1"></td>
+                            <td class="ri bo tamanho" id="2"></td>
+                            <td class="bo tamanho" id="3"></td>
+                        </tr>
+                        <tr>
+                            <td class="ri bo tamanho" id="4"></td>
+                            <td class="ri bo tamanho" id="5"></td>
+                            <td class="bo tamanho" id="6"></td>
+                        </tr>
+                        <tr>
+                            <td class="ri tamanho" id="7"></td>
+                            <td class="ri tamanho" id="8"></td>
+                            <td id="9" class="tamanho"></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div class="jogador">
+                    <form>
+                        <h2>Digite a posição de jogada: </h2>
+                        <input id="posicao" type="text">
+                    </form>
+                    <button onclick="jogar()">Jogar</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
+    
+</body>
+
+</html>
