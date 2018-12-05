@@ -5,9 +5,7 @@
     <link rel="stylesheet" type="text/css" href="index.css">
     <meta charset="UTF-8" />
 
-    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -15,13 +13,14 @@
             authDomain: "jogo-da-velha-1e415.firebaseapp.com",
             databaseURL: "https://jogo-da-velha-1e415.firebaseio.com",
             projectId: "jogo-da-velha-1e415",
-            storageBucket: "",
+            storageBucket: "jogo-da-velha-1e415.appspot.com",
             messagingSenderId: "867756738365"
         };
         firebase.initializeApp(config);
     </script>
-    
-    
+
+
+
 </head>
 
 <body>
@@ -37,42 +36,33 @@
                     <h2>Selecione o jogador:</h2>
                     <div class="centro">
                         <button onclick="decrescer()">-</button>
-                        
-                            <h3 id="usuario">1</h3>
-                        
+
+                        <h3 id="usuario">1</h3>
+
                         <button onclick="acrescentar()">+</button>
                     </div>
                 </div>
             </td>
             <td>
-                <div class="tabela">
-                    <div onclick="teste(this, '1')">aaaa</div>
+                <div>
+
                     <table class="tabela">
                         <tr>
-                            <td class="ri bo tamanho" id="1" ></td>
-                            <td class="ri bo tamanho" id="2"></td>
-                            <td class="bo tamanho" id="3"></td>
+                            <td class="ri bo tamanho" id="0" onclick="jogar(this, '0')"></td>
+                            <td class="ri bo tamanho" id="1" onclick="jogar(this, '1')"></td>
+                            <td class="bo tamanho" id="2" onclick="jogar(this, '2')"></td>
                         </tr>
                         <tr>
-                            <td class="ri bo tamanho" id="4"></td>
-                            <td class="ri bo tamanho" id="5"></td>
-                            <td class="bo tamanho" id="6"></td>
+                            <td class="ri bo tamanho" id="3" onclick="jogar(this, '3')"></td>
+                            <td class="ri bo tamanho" id="4" onclick="jogar(this, '4')"></td>
+                            <td class="bo tamanho" id="5" onclick="jogar(this, '5')"> </td>
                         </tr>
                         <tr>
-                            <td class="ri tamanho" id="7"></td>
-                            <td class="ri tamanho" id="8"></td>
-                            <td id="9" class="tamanho"></td>
+                            <td class="ri tamanho" id="6" onclick="jogar(this, '6')"></td>
+                            <td class="ri tamanho" id="7" onclick="jogar(this, '7')"></td>
+                            <td id="8" class="tamanho" onclick="jogar(this, '8')"></td>
                         </tr>
                     </table>
-                </div>
-            </td>
-            <td>
-                <div class="jogador">
-                    <form>
-                        <h2>Digite a posição da jodada: </h2>
-                        <input id="posicao" type="text"/>
-                    </form>
-                    <button onclick="jogar()">Jogar</button>
                 </div>
             </td>
         </tr>

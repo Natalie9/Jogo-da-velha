@@ -1,5 +1,6 @@
 {
   "projects": {
-    "n": "jogo-da-velha-1e415"
+    "n": "jogo-da-velha-1e415",
+    "default": "jogo-da-velha-1e415"
   }
 }
