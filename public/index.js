@@ -1,81 +1,66 @@
-var database = firebase.database();
+var inputEmail = document.getElementById("inputEmail");
+var inputSenha = document.getElementById("inputSenha");
 
-var jogador = 1;
-var caracter = 'O';
+var btnLogin = document.getElementById("btnLogin");
+var btnCadastrar = document.getElementById("btnCadastrar");
+var btnGoogle = document.getElementById("btnGoogle");
 
-var jogadas = "";
-var posicoes = new Array();
+var display = document.getElementById("display");
 
-var jogo = 1;
+var usuario = new Object();
+var usuarioEmail;
 
-var cont=0; 
 
-function jogar(event, posicao) {
-    cont++;
-    validarUsuario();   
-    posicoes[posicao] = caracter;
-
-    jogadas = posicoes.toString();
+btnCadastrar.addEventListener('click', function () {
    
-    firebase.database().ref('Jogo '+ jogo +'/Jogadas/').set(jogadas);
-    
-    document.getElementById(posicao).innerHTML = caracter;
+    firebase
+        .auth()
+        .createUserWithEmailAndPassword(inputEmail.value, inputSenha.value)
+        .then(function () {
+            display.innerHTML="Bem vindo "+ inputEmail.value;
+        })
+        .catch(function (error) {
+            console.error(error.code);
+            console.error(error.message);
+            alert("Falha ao cadastrar, verifique o erro no console");
+        });
 
-    testarVitoria();
-}
+});
 
-function validarUsuario() {
-    if (jogador == 1) {
-        acrescentar();
-        caracter = "O";
-    }
-    else {
-        caracter = "X";
-        decrescer();
-    }
-}
-function vencido(mensagem){
-    alert("Fim de jogo! "+ mensagem);
-    jogo++;
-    cont =0;
-   
-    var i;
-    for(i=0;i<=8;i++){
-        document.getElementById(i).innerHTML = '';
-        posicoes[i]=null;
-    }
-}
-function decrescer() {
-    jogador = 1;
-    document.getElementById('usuario').innerHTML = '1';
-}
-function acrescentar() {
-    jogador = 2;
-    document.getElementById('usuario').innerHTML = '2';
-}
+btnLogin.addEventListener('click', function(){
+    firebase
+    .auth()
+    .signInWithEmailAndPassword(inputEmail.value, inputSenha.value)
+    .then(function () {
+        display.innerHTML="Bem vindo "+ inputEmail.value;
+        usuario.email= inputEmail.value;
+        usuarioEmail= inputEmail.value;
+        window.location.replace("jogo.html");
+    })
+    .catch(function (error) {
+        console.error(error.code);
+        console.error(error.message);
+        alert("Falha ao logar, verifique o erro no console");
+    });
 
-function testarVitoria() {
-    var linha, coluna;
-    for(linha=0; linha<=8; linha=linha+3){
-        if(posicoes[linha]==posicoes[linha+1]&&posicoes[linha]==posicoes[linha+2]&&posicoes[linha+1]!=null){
-            setTimeout(function(){ vencido("Jogador " + caracter + " venceu!");}, 100);
-        }
-        
-    }
-    for(coluna=0; coluna<=8; coluna++){
-        if(posicoes[coluna]==posicoes[coluna+3]&&posicoes[coluna]==posicoes[coluna+6]&&posicoes[coluna]!=null){
-            setTimeout(function(){ vencido("Jogador " + caracter + " venceu!");}, 100);
-        }
-    }
-    if(posicoes[0]==posicoes[4]&&posicoes[0]==posicoes[8]&&posicoes[0]!=null){
-        setTimeout(function(){ vencido("Jogador " + caracter + " venceu!");}, 100);
-    }
-    if(posicoes[2]==posicoes[4]&&posicoes[2]==posicoes[6]&&posicoes[2]!=null){
-        setTimeout(function(){ vencido("Jogador " + caracter + " venceu!");}, 100);
-    }
-    if(cont==9){
-        setTimeout(function(){ vencido("Empate!"); }, 100);
-        
-    }
+})
 
+
+btnGoogle.addEventListener('click', function(){
+    var provider = new firebase.auth.GoogleAuthProvider();
+    singIn(provider);})
+
+function singIn(provider){
+    firebase 
+    .auth()
+    .signInWithPopup(provider)
+    .then(function (result) {
+        console.log(result);
+        var token = result.credential.acessToken;
+        display.innerHTML="Bem vindo "+ result.user.display;
+    })
+    .catch(function (error) {
+        console.error(error.code);
+        alert("Falha na autenticação");
+    });
 }
