@@ -4,19 +4,20 @@
     <title>Autenticação</title>
     <meta charset="UTF-8">
 
-    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
     <script>
         // Initialize Firebase
         var config = {
-            apiKey: "AIzaSyBKjEJYDDZOidwImiSifPNR80-wvVQeaNg",
-            authDomain: "autenticacao-teste-23a7d.firebaseapp.com",
-            databaseURL: "https://autenticacao-teste-23a7d.firebaseio.com",
-            projectId: "autenticacao-teste-23a7d",
-            storageBucket: "autenticacao-teste-23a7d.appspot.com",
-            messagingSenderId: "897431977519"
+            apiKey: "AIzaSyDaKrDGkiW_18iDoB_B8m6klrsKDCcAhDE",
+            authDomain: "jogo-da-velha-1e415.firebaseapp.com",
+            databaseURL: "https://jogo-da-velha-1e415.firebaseio.com",
+            projectId: "jogo-da-velha-1e415",
+            storageBucket: "jogo-da-velha-1e415.appspot.com",
+            messagingSenderId: "867756738365"
         };
         firebase.initializeApp(config);
     </script>
+    
     
     
 
@@ -25,6 +26,7 @@
 <body>
     <h3 id="display">Você não está autenticado!</h3>
     <form>
+      
         <label for="email">Email:</label>
         <input type="email" id="inputEmail">
         <label for="senha">Senha:</label>
@@ -34,6 +36,7 @@
     <button id="btnCadastrar">Cadastrar novo usuário</button>
     <button id="btnGoogle">Entrar com Google</button>
 
+   
     <script src="index.js"></script>
    
 </body>

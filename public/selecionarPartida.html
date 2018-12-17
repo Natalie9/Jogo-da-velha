@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <title>Autenticação</title>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" type="text/css" href="jogo.css">
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDaKrDGkiW_18iDoB_B8m6klrsKDCcAhDE",
+            authDomain: "jogo-da-velha-1e415.firebaseapp.com",
+            databaseURL: "https://jogo-da-velha-1e415.firebaseio.com",
+            projectId: "jogo-da-velha-1e415",
+            storageBucket: "jogo-da-velha-1e415.appspot.com",
+            messagingSenderId: "867756738365"
+        };
+        firebase.initializeApp(config);
+    </script>
+    
+    
+    
+
+</head>
+
+<body>
+<h2 id="display">bla</h2>
+
+<table class="principal"> 
+    <tr> 
+        <td> <span class="jogador">
+        <h2 >Selecione o jogador:</h2>
+                    <div class="centro">
+                        <button onclick="decrescerJogador()">X</button>
+
+                        <h3 id="jogador">X</h3>
+
+                        <button onclick="acrescentarJogador()">O</button>
+                    </div> </td>
+        <td> </span>
+          <span class="jogador">  <h2 >Selecione o jogo:</h2>
+                    <div class="centro">
+                        <button onclick="decrescer()">-</button>
+
+                        <h3 id="jogo">1</h3>
+
+                        <button onclick="acrescentar()">+</button>
+                    </div> </td>
+        </td></span>
+    </tr>
+    <tr class="centro">
+    <td></td>
+        <td>
+        <button onclick="iniciar()"> Vamos lá! </button>
+        </td>
+    
+    </tr>
+</table>
+
+    
+    <script src="selecionarPartida.js"></script>
+   
+</body>
+
+</html>
