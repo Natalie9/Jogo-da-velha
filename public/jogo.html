@@ -23,24 +23,43 @@
 
 </head>
 
+<table class="principal"> 
+  
+</table>
+
+
 <body>
+<div id="display"></div>
     <table class="principal">
-        <tr>
-            <th>
-                <h1>Jogo da Velha</h1>
-                <h3 id="display"></h3> 
-            </th>
-        </tr>
-        <tr>
-            <td>
-                <div class="jogador">
-                    <h2>Selecione o jogador:</h2>
+      
+    <tr> 
+        <td class="centro"> <span class="jogador">
+        <h3>Selecione o jogador:</h3>
+                    <div class="centro">
+                        <button onclick="decrescerJogador()">X</button>
+
+                        <h3 id="jogador">O</h3>
+
+                        <button onclick="acrescentarJogador()">O</button>
+                    </div>
+        </td></span>
+        <td  class="centro"> 
+          <span class="jogador">  <h3>Selecione o jogo:</h3>
                     <div class="centro">
                         <button onclick="decrescer()">-</button>
 
-                        <h3 id="usuario">1</h3>
+                        <h3 id="jogo">1</h3>
 
                         <button onclick="acrescentar()">+</button>
+                    </div> </td>
+        </td></span>
+    </tr>
+        <tr>
+            <td>
+                <div class="jogador">
+                    <h3>É a vez do jogador:</h3>
+                    <div class="centro">
+                        <h3 id="usuario">O</h3>
                     </div>
                 </div>
             </td>

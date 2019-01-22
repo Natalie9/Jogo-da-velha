@@ -1,25 +1,42 @@
 var database = firebase.database();
 
-var jogador = 1;
+
 var caracter = 'O';
 
 var jogadas = "";
 var posicoes = new Array();
 
-var jogo = 1;
+
 
 var cont = 0;
 var display = document.getElementById("display");
 
+var jogador = document.getElementById("jogador");
+var jogo = 1;
+
 var usuario = "";
 
 var marcador = new Array();
-verificarPlacar();
+
+
+
+
+firebase.auth().onAuthStateChanged(function (user) {
+    
+    if (user) {
+        var user = firebase.auth().currentUser;
+        firebase.database().ref('cadastro/' + user.uid + '/nome/').on('value', function (snapshot) {
+        display.innerHTML  = "Bem-vindo " + snapshot.val()});
+        
+    } else {
+        display.innerHTML = "Sem jogador logado"
+        
+    }
+});
 
 function verificarPlacar() {
     firebase.database().ref('Jogo ' + jogo + '/Jogadas/').on('value', function (snapshot) {
         marcador = snapshot.val();
-
         var i;
         for (i = 0; i <= 8; i++) {
             if (marcador[i])
@@ -31,27 +48,28 @@ function verificarPlacar() {
 }
 
 
+function iniciar() {
+    firebase.database().ref('Jogo ' + jogo + '/Jogador/' + jogador).set(usuario);
+    window.location.replace("jogo.html");
 
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        verificarPlacar()
-        usuario = user.email;
-        display.innerHTML = "Bem vindo " + usuario;
-    } else {
-        display.innerHTML = "Sem jogador logado"
-    }
-});
+}
 
-
-
+function decrescerJogador() {
+    jogador = "O";
+    document.getElementById('jogador').innerHTML = 'X';
+}
+function acrescentarJogador() {
+    jogador = "X";
+    document.getElementById('jogador').innerHTML = 'O';
+}
 
 
 function jogar(event, posicao) {
 
     cont++;
     validarUsuario();
-    
-    firebase.database().ref('Jogo ' + jogo + '/Jogadas/' + posicao).set(caracter);
+
+    firebase.database().ref('Jogo ' + jogo + '/Jogadas/' + posicao).set(jogador);
 
     document.getElementById(posicao).innerHTML = marcador[posicao];
 
@@ -61,13 +79,11 @@ function jogar(event, posicao) {
 }
 
 function validarUsuario() {
-    if (jogador == 1) {
-        acrescentar();
-        caracter = "O";
+    if (jogador == "O") {
+        acrescentarJogador();
     }
     else {
-        caracter = "X";
-        decrescer();
+        decrescerJogador();
     }
 }
 function vencido(mensagem) {
@@ -83,12 +99,15 @@ function vencido(mensagem) {
 }
 
 function decrescer() {
-    jogador = 1;
-    document.getElementById('usuario').innerHTML = '1';
+    if(jogo!=1){
+        jogo --;
+         document.getElementById('jogo').innerHTML = jogo;
+    }
+    
 }
 function acrescentar() {
-    jogador = 2;
-    document.getElementById('usuario').innerHTML = '2';
+    jogo++;
+    document.getElementById('jogo').innerHTML = jogo;
 }
 
 function testarVitoria() {

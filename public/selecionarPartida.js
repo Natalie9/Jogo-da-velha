@@ -44,6 +44,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 function iniciar(){
-    firebase.database().ref('Joo ' + jogo + '/Jogador/' + jogador).set(usuario);
-    console.log("gravado!");
+    firebase.database().ref('Jogo ' + jogo + '/Jogador/' + jogador).set(usuario);
+    window.location.replace("jogo.html");
+   
 }
