@@ -25,7 +25,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     
     if (user) {
         var user = firebase.auth().currentUser;
-        firebase.database().ref('cadastro/' + user.uid + '/nome/').on('value', function (snapshot) {
+        firebase.database().ref('jogadores/' + user.uid + '/nickname/').on('value', function (snapshot) {
         display.innerHTML  = "Bem-vindo " + snapshot.val()});
         
     } else {

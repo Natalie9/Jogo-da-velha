@@ -1,0 +1,18 @@
+td{
+	border-bottom: solid black 1px;
+	width: 33%;
+	padding: 10px;
+}
+table{
+	width: 100%;
+	font-size: 100%;
+	margin-top: 20px;
+}
+button{
+	font-size: 100%;
+	width: 50%;
+	margin-left:25%;
+	text-align: center;
+	height: 10%;
+	background: pink;
+}
