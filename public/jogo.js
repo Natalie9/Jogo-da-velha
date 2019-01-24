@@ -11,7 +11,7 @@ var posicoes = new Array();
 var cont = 0;
 var display = document.getElementById("display");
 
-var jogador = document.getElementById("jogador");
+
 var jogo = 1;
 
 var usuario = "";
@@ -21,12 +21,16 @@ var marcador = new Array();
 
 
 
+
+
+
+
 firebase.auth().onAuthStateChanged(function (user) {
     
     if (user) {
         var user = firebase.auth().currentUser;
-        firebase.database().ref('jogadores/' + user.uid + '/nickname/').on('value', function (snapshot) {
-        display.innerHTML  = "Bem-vindo " + snapshot.val()});
+        firebase.database().ref('jogadores/' + user.uid + '/partidaAtual/').once('value', function (snapshot) {
+        display.innerHTML  = "Boa partida" + snapshot.val()});
         
     } else {
         display.innerHTML = "Sem jogador logado"
@@ -54,14 +58,7 @@ function iniciar() {
 
 }
 
-function decrescerJogador() {
-    jogador = "O";
-    document.getElementById('jogador').innerHTML = 'X';
-}
-function acrescentarJogador() {
-    jogador = "X";
-    document.getElementById('jogador').innerHTML = 'O';
-}
+
 
 
 function jogar(event, posicao) {

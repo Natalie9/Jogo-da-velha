@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>Painel</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="jogo.css">
+
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+    
+     <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDaKrDGkiW_18iDoB_B8m6klrsKDCcAhDE",
+            authDomain: "jogo-da-velha-1e415.firebaseapp.com",
+            databaseURL: "https://jogo-da-velha-1e415.firebaseio.com",
+            projectId: "jogo-da-velha-1e415",
+            storageBucket: "jogo-da-velha-1e415.appspot.com",
+            messagingSenderId: "867756738365"
+        };
+        firebase.initializeApp(config);
+    </script>
+    
+</head>
+
+<body>
+    <h3 id="display"></h3>
+    <table class="principal">
+
+        <tr> 
+            <td class="centro"> <span class="jogador">
+                <h3>Selecione o jogador:</h3>
+                <div class="centro">
+                    <button onclick="decrescerJogador()">X</button>
+
+                    <h3 id="jogador">O</h3>
+
+                    <button onclick="acrescentarJogador()">O</button>
+                </div>
+            </td></span>
+            <td  class="centro"> 
+               <label for="email">Digite o nome da partida:</label>
+               <input type="email" id="inputPartida">
+           </td></span>
+       </tr>
+
+   </table>
+   <button class="partida" id="partida"> Nova partida </button>
+
+   <script src="painel2.js"></script>
+
+</body>
+
+</html>

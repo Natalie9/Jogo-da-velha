@@ -33,23 +33,31 @@ btnCadastrar.addEventListener('click', function (){
 
 	firebase.auth().createUserWithEmailAndPassword(inputEmail.value, inputSenha.value).then((newUser) => {
 		var user = firebase.auth().currentUser;
-		console.log(user.uid);
-		firebase.database().ref('jogadores/').child(user.uid).set({
-			email: inputEmail.value,
-			nickname: inputNome
-		});
+		var usuario = user.uid
+		
 		firebase.database().ref('cadastro/').child(inputNome).set({
 			email: inputEmail.value,
 			id: user.uid
+		});
+		console.log("usu: "+usuario)
+		firebase.database().ref('jogadores/').child(usuario).set({
+			email: inputEmail.value,
+			nickname: inputNome,
+			partida: "nenhuma"
 		});
 		
 	});
 
 	
 	display.innerHTML = "Bem vindo " + inputNome;
-		window.location.replace("painel.html");
+	setTimeout(proximaPagina, 10000);
+
+		
 
 	});
+function proximaPagina(){
+	window.location.replace("painel2.html");
+}
 
 
 
@@ -61,7 +69,7 @@ btnLogin.addEventListener('click', function () {
 		var user = firebase.auth().currentUser;
 		display.innerHTML = "Bem vindo " + inputEmail.value;
 
-		window.location.replace("painel.html");
+		window.location.replace("painel2.html");
 	})
 	.catch(function (error) {
 		console.error(error.code);
