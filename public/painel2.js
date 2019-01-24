@@ -20,7 +20,7 @@ btnNovaPartida.addEventListener('click', function () {
 			jogador: jogador,
 		});
 	firebase.database().ref('jogadores/' + usuario + '/partida/').set(part);
-	//window.location.replace("jogo.html");
+	window.location.replace("jogo.html");
 })
 
 

@@ -18,19 +18,28 @@ var usuario = "";
 
 var marcador = new Array();
 
+var partida
 
 
+var jogador= "O"
 
 
-
+var user = firebase.auth().currentUser;
 
 
 firebase.auth().onAuthStateChanged(function (user) {
-    
+
     if (user) {
         var user = firebase.auth().currentUser;
-        firebase.database().ref('jogadores/' + user.uid + '/partidaAtual/').once('value', function (snapshot) {
-        display.innerHTML  = "Boa partida" + snapshot.val()});
+        firebase.database().ref('jogadores/' + user.uid + '/partida/').once('value', function (snapshot) {
+            display.innerHTML  = "Boa partida " + snapshot.val()
+            partida= snapshot.val()});
+
+        firebase.database().ref('jogos/' + partida + '/'+ user.uid +'/jogador/').once('value', function (snapshot) {
+
+            jogador = snapshot.val()});
+
+
         
     } else {
         display.innerHTML = "Sem jogador logado"
@@ -53,7 +62,7 @@ function verificarPlacar() {
 
 
 function iniciar() {
-    firebase.database().ref('Jogo ' + jogo + '/Jogador/' + jogador).set(usuario);
+    firebase.database().ref('jogos/' + jogo + '/Jogador/' + jogador).set(usuario);
     window.location.replace("jogo.html");
 
 }
@@ -62,11 +71,12 @@ function iniciar() {
 
 
 function jogar(event, posicao) {
+    var user = firebase.auth().currentUser;
 
     cont++;
     validarUsuario();
 
-    firebase.database().ref('Jogo ' + jogo + '/Jogadas/' + posicao).set(jogador);
+    firebase.database().ref('jogos/' + partida + '/'+ user.uid +'/jogadas/' + posicao).set(jogador)
 
     document.getElementById(posicao).innerHTML = marcador[posicao];
 
@@ -76,13 +86,24 @@ function jogar(event, posicao) {
 }
 
 function validarUsuario() {
+    jogador = "O"
     if (jogador == "O") {
         acrescentarJogador();
     }
-    else {
+    if(jogador=="X") {
         decrescerJogador();
     }
 }
+
+
+function decrescerJogador() {
+    jogador = "X";
+}
+function acrescentarJogador() {
+    jogador = "O";
+}
+
+
 function vencido(mensagem) {
     alert("Fim de jogo! " + mensagem);
     jogo++;
@@ -98,7 +119,7 @@ function vencido(mensagem) {
 function decrescer() {
     if(jogo!=1){
         jogo --;
-         document.getElementById('jogo').innerHTML = jogo;
+        document.getElementById('jogo').innerHTML = jogo;
     }
     
 }
